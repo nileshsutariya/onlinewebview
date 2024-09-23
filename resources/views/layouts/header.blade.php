@@ -108,21 +108,21 @@
             <li class="nav-item li">
               <a href="" class="nav-link ">
               <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
-              <p class="ml-1 pl-2">Draft </p>
+              <p class="ml-1 pl-2"> Category </p>
               </a>
             </li>
 
             <li class="nav-item li">
             <a href="" class="nav-link ">
               <i class="bi bi-clock-fill ml-1"></i>
-              <p class="ml-1 pl-1">  Pending Order </p>
+              <p class="ml-1 pl-1"> Post </p>
               </a>
             </li> 
             
             <li class="nav-item li">
               <a href="" class="nav-link ">
               <i class="bi bi-check-circle-fill ml-1"></i>
-              <p class="ml-2">Complete Order  </p>
+              <p class="ml-2"> Settings </p>
               </a>
             </li>
           </ul>
