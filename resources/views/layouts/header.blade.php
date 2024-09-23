@@ -93,36 +93,22 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
             <li class="nav-item li">
               <a href="" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard </p>
+              <i class="fa fa-circle ml-1"></i>
+              <p class="ml-1">Dashboard </p>
               </a>
             </li>
             
             <li class="nav-item li">
               <a href="" class="nav-link ">
-                <i class="fas fa-user-edit ml-1"></i>
-                <p class="ml-1">Profile</p>
+                <i class="fa fa-circle ml-1"></i>
+                <p class="ml-1">Category</p>
               </a>
             </li>
 
             <li class="nav-item li">
               <a href="" class="nav-link ">
-              <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
-              <p class="ml-1 pl-2"> Category </p>
-              </a>
-            </li>
-
-            <li class="nav-item li">
-            <a href="" class="nav-link ">
-              <i class="bi bi-clock-fill ml-1"></i>
-              <p class="ml-1 pl-1"> Post </p>
-              </a>
-            </li> 
-            
-            <li class="nav-item li">
-              <a href="" class="nav-link ">
-              <i class="bi bi-check-circle-fill ml-1"></i>
-              <p class="ml-2"> Settings </p>
+              <i class="fa fa-circle ml-1" aria-hidden="true"></i>
+              <p class="ml-1 ">POST </p>
               </a>
             </li>
           </ul>
