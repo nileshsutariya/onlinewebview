@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -22,3 +23,9 @@ Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
     Route::get('/post/delete/{id}',[PostController::class,'delete'] )->name('post.delete');
     Route::post('/post/update',[PostController::class,'update'] )->name('post.update');
     Route::get('/post/edit/{id}',[PostController::class,'edit'] )->name('post.edit');
+Route::get('/category', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+// Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/user/edit/{id}',[CategoryController::class,'edit'] )->name('categories.edit');
+Route::post('/categories/update',[CategoryController::class,'update'] )->name('categories.update');
+// Route::get('/categories/delete/{id}',[CategoryController::class,'delete'] )->name('categories.delete');
