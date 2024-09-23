@@ -68,7 +68,7 @@
         <li class="nav-item d-none d-sm-inline-block float-right">
           <a href="#" class="btn btn-primary"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="" method="POST" style="display: none;">
+          <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
             @csrf
           </form>
         </li>
@@ -106,7 +106,7 @@
             </li>
 
             <li class="nav-item li">
-              <a href="" class="nav-link ">
+              <a href="{{route('post.index')}}" class="nav-link ">
               <i class="fa fa-circle ml-1" aria-hidden="true"></i>
               <p class="ml-1 ">POST </p>
               </a>
