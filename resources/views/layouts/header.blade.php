@@ -92,14 +92,14 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
             <li class="nav-item li">
-              <a href="" class="nav-link">
+              <a href="{{route('dashboard')}}" class="nav-link">
               <i class="fa fa-circle ml-1"></i>
               <p class="ml-1">Dashboard </p>
               </a>
             </li>
             
             <li class="nav-item li">
-              <a href="" class="nav-link ">
+              <a href="{{route('categories.index')}}" class="nav-link ">
                 <i class="fa fa-circle ml-1"></i>
                 <p class="ml-1">Category</p>
               </a>
@@ -118,3 +118,16 @@
     </aside>
    
       <div class="content-wrapper">
+
+        <script>           
+          $(function(){
+          var current = location.pathname;
+          
+            $('#ul li a').each(function(){
+              var a = $(this);
+              if(a.attr('href').indexOf(current) !== -1){
+                      a.addClass('active');
+                  }
+              })
+          })
+        </script>

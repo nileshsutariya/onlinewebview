@@ -10,20 +10,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        {{-- @if (isset($categories)) --}}
-                            <form action="" method="post" enctype="multipart/form-data">
-                            {{-- @else --}}
+                            <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
                                 <form action="" method="POST" enctype="multipart/form-data">
-                        {{-- @endif --}}
                         @csrf
                         <div class="form-group">
                             <label for="name">Category Name</label>
                             <input type="text" name="name" id="name" class="form-control">
+                            {{-- value="{{ isset($category)? $category->name : old('name')}}"> --}}
                         </div>
                         <div class="form-group">
-                            <label for="image">Icon</label>
+                            <label for="icon">Icon</label>
                             <div class="form-group">
-                            <input type="file" name="image" id="image">
+                            <input type="file" name="icon" id="icon">
                             </div>
                         </div>
                         <div class="row">
@@ -57,24 +55,32 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Icon</th>
+                                    {{-- <th>Icon</th> --}}
                                     <th> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a class="btn update">
-                                                <i class="bi bi-pencil-square text-success"></i> Edit
-                                            </a>
-                                            <a class="btn delete">
-                                                <i class="fa fa-trash text-danger"></i> Delete
-                                            </a>
-                                        </td>
-                                    </tr>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($categories as $value)
+                                    
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$value->name}}</td>
+                                    {{-- <td><img src="{{asset('public/imageuploaded/'.$value->icon)}}"
+                                        style="width: 100px; height:100px;"></td>
+                                    <td> --}}
+                                    <td>
+                                        <a class="btn update">
+                                            <i class="bi bi-pencil-square text-success"></i> Edit
+                                        </a>
+                                        <a class="btn delete">
+                                            <i class="fa fa-trash text-danger"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
 
                         </table>
