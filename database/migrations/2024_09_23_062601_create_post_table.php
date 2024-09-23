@@ -16,12 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->string('title');
-            $table->string('image');
-            $table->string('description');
-            $table->string('author');
-            $table->string('tags');
+            $table->text('description');
+            $table->string('link');
+            $table->text('banner');
+            $table->boolean('is_suggested')->default(0)->comment('0 is false , 1 is true');
             $table->string('slug');
-            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');
+            $table->boolean('is_visible')->default(1)->comment('0 is false , 1 is true');
             $table->timestamps();
         });
     }
