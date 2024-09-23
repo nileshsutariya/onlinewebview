@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 //     return view('registration');
 // });
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('loginform');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/register', [UserController::class, 'index'])->name('register');

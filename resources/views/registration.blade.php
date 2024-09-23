@@ -7,23 +7,20 @@
 </head>
  
 <body style="background: #fff; padding-top: 20vh;">
-<!--Login form starts-->
   <section class="container-fluid">
-  <!--row justify-content-center is used for centering the login form-->
     <section class="row justify-content-center">
-    <!--Making the form responsive-->
       <section class="col-12 col-sm-6 col-md-4">
-        <form class="form-container" style="background: #dfdbdb; border-radius: 10px; padding: 40px;">
-        <!--Binding the label and input together-->
-        <div class="form-group">
+        <form class="form-container" action="{{ route('store') }}" method="POST" style="background: #dfdbdb; border-radius: 10px; padding: 40px;">
+            @csrf
+            <div class="form-group">
           <h4 class="text-center font-weight-bold mb-3"> Register </h4>
-            <input type="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Name">
-            <input type="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Email">
-            <input type="password" class="form-control mb-3" id="InputPassword1" placeholder="Password">
-            <input type="password" class="form-control mb-3" id="InputPassword1" placeholder="Confirm Password">
+            <input type="text" name="name" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Name">
+            <input type="email" name="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Email">
+            <input type="password" name="password" class="form-control mb-3" id="InputPassword1" placeholder="Password">
+            <input type="password" name="confirmpassword" class="form-control mb-3" id="InputPassword1" placeholder="Confirm Password">
         
         </div>
-        <button type="Sign in" class="btn btn-primary btn-block mt-2">Sign Up</button>
+        <button type="Sign up" class="btn btn-primary btn-block mt-2">Sign Up</button>
         <div class="form-footer text-center mt-2">
           <p> Already have an account? <a href="#">Sign In</a></p>
         </div>

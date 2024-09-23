@@ -13,13 +13,14 @@
     <section class="row justify-content-center">
     <!--Making the form responsive-->
       <section class="col-12 col-sm-6 col-md-4">
-        <form class="form-container" style="background: #dfdbdb; border-radius: 10px; padding: 40px;">
+        <form class="form-container" action="{{route('login')}}" method="POST" style="background: #dfdbdb; border-radius: 10px; padding: 40px;">
+            @csrf
         <!--Binding the label and input together-->
         <div class="form-group">
           <h4 class="text-center font-weight-bold mb-4"> Login </h4>
-          <input type="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Username">
+          <input type="email" name="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Email">
             
-          <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="InputPassword1" placeholder="Password">
           <a href="#" style="font-size: 12px;">Forgot Password?</a>
         </div>
         <button type="Sign in" class="btn btn-primary btn-block mt-2">Sign in</button>
