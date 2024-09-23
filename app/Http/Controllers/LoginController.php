@@ -13,6 +13,7 @@ class LoginController extends Controller
     {
         return view('login');
     }
+
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
