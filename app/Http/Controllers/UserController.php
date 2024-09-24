@@ -27,9 +27,9 @@ class UserController extends Controller
         ])->validate();
         
         $users = new User;
-        $users->name = $request['name'];
-        $users->email = $request['email'];
-        $users->password = Hash::make($request['password']);
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = Hash::make($request->password);
         $users->status = 1;
         $users->save();
         return redirect()->route('loginform')->with('store', 'User Created Successfully!!');

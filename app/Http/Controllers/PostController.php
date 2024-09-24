@@ -45,11 +45,7 @@ class PostController extends Controller
         $post->is_visible = $visible;
         $post->save();
         $url=$request->url();
-        if (strpos($url, 'api') == true){
-             return response()->json("register successfully.");
-         }else{
-            return redirect()->route('post.index')->with('store', 'post Created Successfully!!');
-        }
+        return redirect()->route('post.index')->with('store', 'post Created Successfully!!');
     }
     public function edit($id){
         $posts= post::paginate(3);
@@ -59,14 +55,12 @@ class PostController extends Controller
     }
 
     public function update(Request $request){
+        // print_r($request->all());die();
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'link' => 'required',
             'visible' => 'required|in:true,false',
         ])->validate(); 
-            
-        $suggested = $request->suggested == 'on' ? 1 : 0;
-        $visible = $request->visible == 'true' ? 1 : 0;
         
         $slug = Str::slug($request->title);
         $str = strtolower($request->title);
@@ -83,16 +77,11 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->link=$request->link;
-        $post->is_suggested= $suggested;
+        $post->is_suggested= $request->suggested == 'on' ? 1 : 0;
         $post->slug = preg_replace('/\s+/', '-', $str);
-        $post->is_visible = $visible;
+        $post->is_visible = $request->visible == 'true' ? 1 : 0;
         $post->save();
-        $url=$request->url();
-        if (strpos($url, 'api') == true){
-             return response()->json("register successfully.");
-         }else{
-            return redirect()->route('post.index')->with('store', 'post Updated Successfully!!');
-        }
+        return redirect()->route('post.index')->with('store', 'post Updated Successfully!!');
     }
     public function delete($id)
     {

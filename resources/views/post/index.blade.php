@@ -99,7 +99,12 @@
                                         </label>
                                         <label>
                                             <input type="radio" name="visible" value="false" {{ isset($post) && $post->is_visible == '0' ? 'checked' : '' }}> False
-                                        </label>
+                                        </label><br>        
+                                        @error('visible')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
                             </div>
