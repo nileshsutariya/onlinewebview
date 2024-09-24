@@ -25,8 +25,7 @@
       <span class="error" style="color:red">
                 {{$message}}
             </span>
-      @enderror
-      <a href="#" style="font-size: 12px;">Forgot Password?</a>
+      @enderrorchange
         </div>
         @error('email')
       <span class="error" style="color:red">
@@ -35,7 +34,7 @@
       @enderror
         <button type="submit" class="btn btn-primary btn-block mt-2">Sign in</button>
         <div class="form-footer text-center mt-2">
-          <p> Don't have an account? <a href="#">Sign Up</a></p>
+          <p> Don't have an account? <a href="{{route('register')}}">Sign Up</a></p>
         </div>
         </form>
       </section>

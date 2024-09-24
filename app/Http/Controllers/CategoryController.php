@@ -3,18 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->id) {
+            $query = Category::where('id',$request->id)->first();
+            if($query->status==1){
+                $query->status=0;
+            }else{
+                $query->status=1;
+            }
+            $query->save();
+        }
         $categories = Category::all();
-        $category = Category::all();
-        return view('category', compact('category', 'categories'));
+        return view('category', compact( 'categories'));
     }
     public function store(Request $request)
     {
@@ -27,9 +34,6 @@ class CategoryController extends Controller
 
             $category->icon=$imagename;
         }
-        $slug = Str::slug($request->name);
-        $str = strtolower($request->name);
-        $category->slug = preg_replace('/\s+/', '-', $str);
         if ($request['status'] == 'on') {
             $status = 1;
         } else {
@@ -41,20 +45,21 @@ class CategoryController extends Controller
     }
     public function edit($id)
     {
-        $categories= Category::paginate(4);
+        $categories= Category::all();
         $category = Category::find($id);
-        return view("categories.index",compact('category', 'categories'));
+        $category = Category::where('id',$id)->first();
+
+        return view('category',compact('category', 'categories'));
     }
     public function update(request $request)
-    {
-        
+    {   
         $validator = Validator::make($request->all(), [
             'name' => 'required'
         ])->validate();
-   
-        $category = Category::find($request->id); 
-        print_r($request->all());
-        $category->name = $request['name'];
+
+        $category = Category::find($request->id);  
+        
+        $category->name = $request->name; 
         if($icon=$request->file('icon')){
             $imagename= $icon->getClientOriginalName();
             $imagepath='public/imageuploaded/';
@@ -62,14 +67,19 @@ class CategoryController extends Controller
 
             $category->icon=$imagename;
         }
-        if ($request['status'] == 'on') {
+        if ($request['status'] == '1') {
             $status = 1;
         } else { 
             $status = 0;
         }
         $category->status = $status;
         $category->save();
-            $categories= Category::all();
+        // $categories= Category::all();
             return redirect()->route('categories.index')->with('update', 'Item Updated Successfully!!');
-        }
+    }
+    public function delete($id)
+    {
+        $categories = Category::find($id)->delete();
+        return redirect()->route('categories.index')->with('delete', 'Item Deleted Successfully!');
+    }
 }

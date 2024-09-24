@@ -94,23 +94,54 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
             <li class="nav-item li">
               <a href="{{route('dashboard')}}" class="nav-link">
-              <i class="fa fa-circle ml-1"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p class="ml-1">Dashboard </p>
               </a>
             </li>
             
             <li class="nav-item li">
               <a href="{{route('categories.index')}}" class="nav-link ">
-                <i class="fa fa-circle ml-1"></i>
+                <i class="nav-icon fa-solid fa-layer-group"></i>
                 <p class="ml-1">Category</p>
               </a>
             </li>
 
             <li class="nav-item li">
               <a href="{{route('post.index')}}" class="nav-link ">
-              <i class="fa fa-circle ml-1" aria-hidden="true"></i>
-              <p class="ml-1 ">POST </p>
+                <i class="nav-icon fa-brands fa-usps" aria-hidden="true"></i>
+              <p class="ml-1 ">Post</p>
               </a>
+            </li>
+            <li class="nav-item li">
+              <a href="#" class="nav-link ">
+              <i class="nav-icon fa-solid fa-gear" aria-hidden="true"></i>
+              <p class="ml-1 ">Settings <i class="right fas fa-angle-left"></i> </p>
+
+              </a>
+              <ul class="nav nav-treeview ul">
+                <li class="nav-item">
+                  <a href="#" class="nav-link li">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ad Link</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview ul">
+                <li class="nav-item">
+                  <a href="#" class="nav-link li">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ad View</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview ul">
+                <li class="nav-item">
+                  <a href="" class="nav-link li">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New Added Count</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
           <!-- /.sidebar-menu -->
