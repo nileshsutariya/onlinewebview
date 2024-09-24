@@ -25,8 +25,7 @@
       <span class="error" style="color:red">
                 {{$message}}
             </span>
-      @enderror
-      {{-- <a href="#" style="font-size: 12px;">Forgot Password?</a> --}}
+      @enderrorchange
         </div>
         @error('email')
       <span class="error" style="color:red">
