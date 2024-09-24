@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        return view('userdashboard');
+    }
     public function index()
     {
         return view('registration');

@@ -17,14 +17,14 @@
           <input type="email" name="email" class="form-control mb-3" id="Inputuser1" aria-describeby="usernameHelp" placeholder="Email">
             
           <input type="password" name="password" class="form-control" id="InputPassword1" placeholder="Password">
-          <a href="#" style="font-size: 12px;">Forgot Password?</a>
+          {{-- <a href="#" style="font-size: 12px;">Forgot Password?</a> --}}
         </div>
         @error('fail')
       <span> {{$message}}</span> 
         @enderror
         <button type="submit" class="btn btn-primary btn-block mt-2">Sign in</button>
         <div class="form-footer text-center mt-2">
-          <p> Don't have an account? <a href="#">Sign Up</a></p>
+          <p> Don't have an account? <a href="{{route('register')}}">Sign Up</a></p>
         </div>
         </form>
       </section>

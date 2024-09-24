@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->nullable();
+            $table->text('icon');
             $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');
             $table->timestamps();
         });
