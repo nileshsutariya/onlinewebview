@@ -25,7 +25,7 @@
       <span class="error" style="color:red">
                 {{$message}}
             </span>
-      @enderrorchange
+      @enderror
         </div>
         @error('email')
       <span class="error" style="color:red">
