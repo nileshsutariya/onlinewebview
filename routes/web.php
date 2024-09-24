@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
-// Route::get('/register', function () {
-//     return view('registration');
-// });
+Route::get('/', function () {
+    return redirect()->route('loginform');
+});
 
 Route::get('/', [LoginController::class, 'index'])->name('loginform');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -17,6 +18,11 @@ Route::post('/store',[UserController::class,'store'])->name('store');
 Route::get('/register', [UserController::class, 'index'])->name('register');
 Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
 
+    Route::get('/post',[PostController::class,'index'] )->name('post.index');
+    Route::post('/post/store',[PostController::class,'store'] )->name('post.store');
+    Route::get('/post/delete/{id}',[PostController::class,'delete'] )->name('post.delete');
+    Route::post('/post/update',[PostController::class,'update'] )->name('post.update');
+    Route::get('/post/edit/{id}',[PostController::class,'edit'] )->name('post.edit');
 Route::get('/category', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 // Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');

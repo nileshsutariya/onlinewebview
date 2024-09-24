@@ -21,11 +21,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -68,7 +69,7 @@
         <li class="nav-item d-none d-sm-inline-block float-right">
           <a href="#" class="btn btn-primary"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
             @csrf
           </form>
         </li>
@@ -106,9 +107,9 @@
             </li>
 
             <li class="nav-item li">
-              <a href="#" class="nav-link ">
-              <i class="nav-icon fa-brands fa-usps" aria-hidden="true"></i>
-              <p class="ml-1 ">Post </p>
+              <a href="{{route('post.index')}}" class="nav-link ">
+              <i class="fa fa-circle ml-1" aria-hidden="true"></i>
+              <p class="ml-1 ">POST </p>
               </a>
             </li>
             <li class="nav-item menu-open li">
@@ -148,8 +149,6 @@
       <!-- /.sidebar -->
     </aside>
    
-      <div class="content-wrapper">
-
         <script>           
           $(function(){
           var current = location.pathname;
@@ -162,3 +161,65 @@
               })
           })
         </script>
+      <div class="content-wrapper">
+
+
+@if (session('store'))
+      <script>
+          const Toast = Swal.mixin({
+              toast: true,
+              position: "top-right",
+              iconColor: 'green',
+              customClass: {
+                  popup: 'colored-toast'
+              },
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true 
+          });
+          Toast.fire("Message", "{{ Session::get('store') }}", 'success', {
+              icon: 'success',
+          });
+
+      </script>
+      @endif
+
+      @if (session('update'))
+      <script>
+          const Toast = Swal.mixin({
+              toast: true,
+              position: "top-right",
+              iconColor: 'green',
+              customClass: {
+                  popup: 'colored-toast'
+              },
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true 
+          });
+          Toast.fire("Message", "{{ Session::get('update') }}", 'success', {
+              icon: 'success',
+          });
+
+      </script>
+      @endif
+
+      @if (session('delete'))
+      <script>
+          const Toast = Swal.mixin({
+              toast: true,
+              position: "top-right",
+              iconColor: 'green',
+              customClass: {
+                  popup: 'colored-toast'
+              },
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true 
+          });
+          Toast.fire("Message", "{{ Session::get('delete') }}", 'success', {
+              icon: 'success',
+          });
+
+      </script>
+      @endif

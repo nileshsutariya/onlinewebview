@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,40 +28,27 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         $email=$request->email;
         $user =User::where('email',$email)->first(); 
-        $admin = Admin::where('email', $email)->first();
-        // $url=$request->url();
-        // if (Auth::attempt($credentials)) {
-        //     return redirect()->route('dashboard');
-        // }
-        if($user)
-        {
-            if(Auth::guard('web')->attempt($credentials)){
-                return redirect()->route('userdashboard');
+        $url=$request->url();
+        if($user){
+            if ((int) $user->status == 1) {
+                if (Auth::attempt($credentials)) {
+                    return redirect()->route(route: 'dashboard');
+                } else {
+                    Auth::logout();
+                    return back()->withInput()->withErrors(['password' => 'Wrong Password',]); 
+                }
+            } else {
+                Auth::logout();
+                return back()->withInput()->withErrors(['inactive' => 'your account is not active',]); 
             }
-            else {
-                return back()->withInput()->withErrors(['password' => 'Wrong Password',]); 
-            } 
-        }
-        elseif($admin)
-        {
-            if(Auth::guard('admin')->attempt($credentials)){
-                return redirect()->route('dashboard');
-            }
-            else {
-                return back()->withInput()->withErrors(['password' => 'Wrong Password',]); 
-            }
-        }
-        else{
-            return back()->withInput()->withErrors(['email' => 'Wrong email',]); 
+        } else {
+            Auth::logout();
+            return back()->withInput()->withErrors(['email' => 'you have to register first',]); 
         }
     }
-    public function logout(Request $request)
-    {
-        // $token = $request->user()->token();
-
-        Auth::guard('web')->logout();
-        Auth::guard('admin')->logout();
-        return redirect('/');
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('loginform');
     }
 }
         
