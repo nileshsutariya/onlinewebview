@@ -28,7 +28,6 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         $email=$request->email;
         $user =User::where('email',$email)->first(); 
-        $url=$request->url();
         if($user){
             if ((int) $user->status == 1) {
                 if (Auth::attempt($credentials)) {
