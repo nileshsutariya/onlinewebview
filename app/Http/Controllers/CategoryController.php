@@ -41,7 +41,12 @@ class CategoryController extends Controller
         }
         $category->status = $status;
         $category->save();
-        return redirect()->route('categories.index');
+        $url=$request->url();
+            if (strpos($url, 'api') == true){
+                 return response()->json("added successfully.");
+             }else{
+                return redirect()->route('categories.index');
+            }
     }
     public function edit($id)
     {
