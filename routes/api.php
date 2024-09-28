@@ -11,5 +11,8 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login',[apiController::class,'login'] );
 Route::get('/category',[apiController::class,'category'] );
+Route::get('/bycategory/{id}',[apiController::class,'bycategory'] );
 Route::get('/post',[apiController::class,'post'] );
+
+
 

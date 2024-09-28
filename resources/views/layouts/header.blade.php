@@ -94,7 +94,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
             <li class="nav-item li">
               <a href="{{route('dashboard')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fa fa-dashboard"></i>
               <p class="ml-1">Dashboard </p>
               </a>
             </li>

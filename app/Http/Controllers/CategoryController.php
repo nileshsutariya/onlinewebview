@@ -21,12 +21,12 @@ class CategoryController extends Controller
             $query->save();
         }
         $categories = Category::all();
-        return view('category', compact( 'categories'));
+        return view('category.index', compact( 'categories'));
     }
     public function store(Request $request)
     {
         $category = new Category();
-        $category->name = $request['name']; 
+        $category->name = $request->name; 
         if($icon = $request->file('icon')){
             $imagename = $icon->getClientOriginalName();
             $imagepath='public/imageuploaded/';
@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
             $category->icon=$imagename;
         }
-        if ($request['status'] == 'on') {
+        if ($request->status== 'on') {
             $status = 1;
         } else {
             $status = 0;
@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
             $category->icon=$imagename;
         }
-        if ($request['status'] == '1') {
+        if ($request->status == '1') {
             $status = 1;
         } else { 
             $status = 0;
