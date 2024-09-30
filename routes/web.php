@@ -10,22 +10,22 @@ Route::get('/', function () {
     return redirect()->route('loginform');
 });
 
-Route::get('/', [LoginController::class, 'index'])->name('loginform');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('loginform');
+Route::post('/login-check', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/store',[UserController::class,'store'])->name('store');
 Route::get('/register', [UserController::class, 'index'])->name('register');
-Route::get('/dashboard', [UserController::class, 'home'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('/post',[PostController::class,'index'] )->name('post.index');
-    Route::post('/post/store',[PostController::class,'store'] )->name('post.store');
-    Route::get('/post/delete/{id}',[PostController::class,'delete'] )->name('post.delete');
-    Route::post('/post/update',[PostController::class,'update'] )->name('post.update');
-    Route::get('/post/edit/{id}',[PostController::class,'edit'] )->name('post.edit');
+Route::get('/post',[PostController::class,'index'] )->name('post.index');
+Route::post('/post/store',[PostController::class,'store'] )->name('post.store');
+Route::get('/post/delete/{id}',[PostController::class,'delete'] )->name('post.delete');
+Route::post('/post/update',[PostController::class,'update'] )->name('post.update');
+Route::get('/post/edit/{id}',[PostController::class,'edit'] )->name('post.edit');
+
 Route::get('/category', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-// Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/categories/edit/{id}',[CategoryController::class,'edit'] )->name('categories.edit');
 Route::post('/categories/update',[CategoryController::class,'update'] )->name('categories.update');
 Route::get('/categories/delete/{id}',[CategoryController::class,'delete'] )->name('categories.delete');

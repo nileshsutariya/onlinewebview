@@ -136,9 +136,9 @@
               </ul>
               <ul class="nav nav-treeview ul">
                 <li class="nav-item">
-                  <a href="" class="nav-link li">
+                  <a href="#" class="nav-link li">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>New Added Count</p>
+                    <p>Now Added Count</p>
                   </a>
                 </li>
               </ul>
