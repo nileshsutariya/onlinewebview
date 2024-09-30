@@ -10,7 +10,6 @@ class SliderController extends Controller
     public function index()
     {
         $sliders = Slider::paginate(3);
-        // $sliders = Slider::orderBy('created_at', 'desc')->take(3)->get();
         return view('slider', compact('sliders'));
     }
     public function store(Request $request)
