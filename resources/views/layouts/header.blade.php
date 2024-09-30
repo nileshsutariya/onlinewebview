@@ -142,6 +142,14 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview ul">
+                <li class="nav-item">
+                  <a href="{{route('slider.index')}}" class="nav-link li">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Slider</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
           <!-- /.sidebar-menu -->

@@ -13,3 +13,4 @@ Route::post('/login',[apiController::class,'login'] );
 Route::get('/category',[apiController::class,'category'] );
 Route::get('/post',[apiController::class,'post'] );
 
+Route::get('/slider',[apiController::class,'slider'] );

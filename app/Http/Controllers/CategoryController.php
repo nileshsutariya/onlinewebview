@@ -20,8 +20,8 @@ class CategoryController extends Controller
             }
             $query->save();
         }
-        $categories = Category::all();
-        return view('category', compact( 'categories'));
+        $categories = Category::paginate(3);
+        return view('category.index', compact( 'categories'));
     }
     public function store(Request $request)
     {
@@ -45,16 +45,16 @@ class CategoryController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("added successfully.");
              }else{
-                return redirect()->route('categories.index');
+                return redirect()->route('categories.index')->with('store', 'post Created Successfully!!');
             }
     }
     public function edit($id)
     {
-        $categories= Category::all();
+        $categories= Category::paginate(3);
         $category = Category::find($id);
         $category = Category::where('id',$id)->first();
 
-        return view('category',compact('category', 'categories'));
+        return view('category.index',compact('category', 'categories'));
     }
     public function update(request $request)
     {   
@@ -85,6 +85,6 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $categories = Category::find($id)->delete();
-        return redirect()->route('categories.index')->with('delete', 'Item Deleted Successfully!');
+        return redirect()->route(route: 'categories.index')->with('delete', 'Item Deleted Successfully!');
     }
 }

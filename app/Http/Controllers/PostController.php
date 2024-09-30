@@ -81,7 +81,7 @@ class PostController extends Controller
         $post->slug = preg_replace('/\s+/', '-', $str);
         $post->is_visible = $request->visible == 'true' ? 1 : 0;
         $post->save();
-        return redirect()->route('post.index')->with('store', 'post Updated Successfully!!');
+        return redirect()->route('post.index')->with('update', 'post Updated Successfully!!');
     }
     public function delete($id)
     {

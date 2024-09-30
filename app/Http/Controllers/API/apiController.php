@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Post;
 use App\Models\User;
 
+use App\Models\Slider;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,5 +52,10 @@ class apiController extends Controller
             Auth::logout();
             return response()->json('you have to register first'); 
         }
+    }
+    public function slider()
+    {
+        $sliders = Slider::orderBy('created_at', 'desc')->take(3)->get();
+        return response()->json($sliders);
     }
 }

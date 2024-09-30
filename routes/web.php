@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -30,4 +31,10 @@ Route::get('/categories/edit/{id}',[CategoryController::class,'edit'] )->name('c
 Route::post('/categories/update',[CategoryController::class,'update'] )->name('categories.update');
 Route::get('/categories/delete/{id}',[CategoryController::class,'delete'] )->name('categories.delete');
 
-Route::get('/userdashboard', [UserController::class, 'dashboard'])->name('userdashboard');
+Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
+Route::post('/slider/store', [SliderController::class, 'store'])->name('slider.store');
+Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+Route::post('/slider/update/',[SliderController::class,'update'] )->name('slider.update');
+Route::get('/slider/delete/{id}',[SliderController::class,'delete'] )->name('slider.delete');
+
+// Route::get('/ads')

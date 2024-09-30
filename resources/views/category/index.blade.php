@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <div class="card mb-3 mt-4">
+                <div class="card mb-3 mt-4 card-outline card-primary shadow">
                     <div class="card-header">
                         <h3 class="card-title">Add New Category</h3>
                     </div>
@@ -53,12 +53,12 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="card mb-3 mt-4">
+                <div class="card mb-3 mt-4 card-outline card-primary shadow">
                     <div class="card-header">
                         <h3 class="card-title">Category List</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body" style="overflow-x:auto;">
 
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -106,6 +106,9 @@
                             </tbody>
 
                         </table>
+                        <div>
+                            {{ $categories->links() }}
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-body -->

@@ -13,11 +13,11 @@ class LoginController extends Controller
 {
     public function index()
     {
-        if(Auth::guard('web')->check()){
-            return redirect()->route('userdashboard');                
-        }elseif(Auth::guard('admin')->check()){
-            return redirect()->route('dashboard');
-        }
+        // if(Auth::guard('web')->check()){
+        //     return redirect()->route('userdashboard');                
+        // }elseif(Auth::guard('admin')->check()){
+        //     return redirect()->route('dashboard');
+        // }
         return view('login');
     }
     public function login(Request $request){
