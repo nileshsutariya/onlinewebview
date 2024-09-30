@@ -17,10 +17,6 @@ class UserController extends Controller
     {
         return view('registration');
     }
-    public function home()
-    {
-        return view('home');
-    }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

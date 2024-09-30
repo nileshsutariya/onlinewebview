@@ -13,12 +13,11 @@ class LoginController extends Controller
 {
     public function index()
     {
-        // if(Auth::guard('web')->check()){
-        //     return redirect()->route('userdashboard');                
-        // }elseif(Auth::guard('admin')->check()){
-        //     return redirect()->route('dashboard');
-        // }
-        return view('login');
+        if(Auth::check()){ 
+            return view('dashboard');
+        }else{
+            return view('login');
+        }
     }
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
@@ -49,6 +48,6 @@ class LoginController extends Controller
         Auth::logout();
         return redirect()->route('loginform');
     }
-}
-        
+
+}        
     
