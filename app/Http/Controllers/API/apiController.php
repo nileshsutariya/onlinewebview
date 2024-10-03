@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 
 use App\Models\Slider;
+use App\Models\AdsLink;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Validator;
 
 class apiController extends Controller
 {
-    public function index(){
-    }
     // public function login(Request $request){
     //     $validator = Validator::make($request->all(), [
     //         'email' => 'required|email',
@@ -61,5 +60,11 @@ class apiController extends Controller
     {
         $sliders = Slider::orderBy('created_at', 'desc')->take(3)->get();
         return response()->json($sliders);
+    }
+    public function index()
+    {
+        $adsLinks = AdsLink::all();
+        // print_r(request()->ip()); die();$_SERVER['SERVER_ADDR']
+        return response()->json($adsLinks);
     }
 }

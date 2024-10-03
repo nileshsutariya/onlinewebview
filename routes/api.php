@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdsLinkController;
 use App\Http\Controllers\API\apiController;
 use App\Http\Controllers\API\ActivitylogController;
 
@@ -19,5 +20,7 @@ Route::get('/post/{id}',[apiController::class,'postdetails'] );
 
 Route::post('/activitylog/store',[ActivitylogController::class,'store'] );
 
-
 Route::get('/slider',[apiController::class,'slider'] );
+
+Route::get('/ads-links', [apiController::class, 'index']);
+Route::post('/ads-links', [AdsLinkController::class, 'store']);
