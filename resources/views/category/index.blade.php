@@ -5,7 +5,11 @@
             <div class="col-md-5">
                 <div class="card mb-3 mt-4 card-outline card-primary shadow">
                     <div class="card-header">
+                        @if(isset($category))
+                        <h3 class="card-title">Update Category</h3>
+                        @else
                         <h3 class="card-title">Add New Category</h3>
+                        @endif
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -53,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="card mb-3 mt-4 card-outline card-primary shadow">
+                <div class="card mb-3 mt-4 card-outline card-info shadow">
                     <div class="card-header">
                         <h3 class="card-title">Category List</h3>
                     </div>
