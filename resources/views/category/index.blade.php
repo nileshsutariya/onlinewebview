@@ -15,7 +15,7 @@
     </div>
 </section>
 <section class="content">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
                 <div class="card mb-3 mt-2 card-outline card-primary shadow">
@@ -61,7 +61,6 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
                         </form>
                     </div>
                     <!-- /.card-body -->

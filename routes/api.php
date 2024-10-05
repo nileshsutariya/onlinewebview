@@ -6,7 +6,6 @@ use App\Http\Controllers\AdsLinkController;
 use App\Http\Controllers\API\apiController;
 use App\Http\Controllers\API\ActivitylogController;
 
-
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
@@ -16,7 +15,7 @@ Route::get('/category',[apiController::class,'category'] );
 Route::get('/bycategory/{id}',[apiController::class,'bycategory'] );
 
 Route::get('/post',[apiController::class,'post'] );
-Route::get('/post/{id}',[apiController::class,'postdetails'] );
+Route::get('/post/{id}', [apiController::class,'postdetails'] );
 
 Route::post('/activitylog/store',[ActivitylogController::class,'store'] );
 
