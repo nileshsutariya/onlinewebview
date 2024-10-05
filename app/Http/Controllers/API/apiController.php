@@ -51,13 +51,17 @@ class apiController extends BaseController
 
     public function bycategory(Request $request){
         $validator = Validator::make($request->all(), [
-            'filter_param.id' => 'required|exists:category,id',
+            'filter_param.id' => 'required',
         ]);
         if($validator->fails()){
             return $this->apierror( ['errors' => $validator->errors()->all()]);
         }
         $id=$request->filter_param['id'];
-        $post=Post::where('category_id',$id)->offset($request->start*$request->length)->limit($request->length)->get();;
+        // print_r($id); die;
+        $post=Post::where('category_id',$id)->offset($request->start*$request->length)->limit($request->length)->get();
+        if ($post->isEmpty()) {
+            return $this->apierror(['error' => 'Post not found'], ['id_not_found' => true], 404);
+        }
         return $this->apisuccess($post, 'bycategory list');
 
     }

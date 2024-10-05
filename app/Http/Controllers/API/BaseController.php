@@ -10,29 +10,36 @@ class BaseController extends Controller
 {
     public function apisuccess($result, $message)
     {
-        // $code = Http::get('https://192.168.1.165/api');
-        // $status=$code->status();
-    	$response = [
-            'success' => true,
-            'status'=>1,
-            'message' => $message,
-            'data'    => $result,
-        ];
- 
-        return response()->json($response, 200);
-    }
-    public function apierror($error, $errorMessages = [], $code = 404)
-    {
-    	$response = [
-            'success' => false,
-            'status'=>0,
-            'message' => $error,
-        ];
- 
-        if(!empty($errorMessages)){
-            $response['data'] = $errorMessages;
+        $data = Http::get('http://localhost/onlinewebview/');
+        $status = $data->status();
+        // print_r($status); die;
+        if ($data->successful()) {
+            return response()->json([
+                'success' => true,
+                'status' => $status,   
+                'message' => $message,
+                'data' => $result 
+            ], $status);
         }
- 
-        return response()->json($response, $code);
+        return response()->json([
+            'success' => false,
+            'status' => $status,
+            'message' => 'API request failed'
+        ], $status);
     }
+
+    public function apierror($error, $errorMessages = [],  $status = 422)
+    {
+        if (isset($errorMessages['id_not_found'])) {
+            $status = 404; 
+        };
+
+        return response()->json([
+            'success' => false,
+            'status' => $status,
+            'message' => $errorMessages,
+            'data' => $error
+        ], $status);
+    }
+
 }
