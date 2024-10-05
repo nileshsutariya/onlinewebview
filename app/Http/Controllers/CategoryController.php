@@ -31,7 +31,6 @@ class CategoryController extends Controller
             $imagename = $icon->getClientOriginalName();
             $imagepath='public/imageuploaded/';
             $icon->move($imagepath, $imagename);
-
             $category->icon=$imagename;
         }
         if ($request->status== 'on') {

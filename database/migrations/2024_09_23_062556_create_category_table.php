@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('icon');
-            $table->string('slug')->nullable();
             $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');
             $table->timestamps();
         });

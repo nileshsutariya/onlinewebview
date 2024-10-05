@@ -208,64 +208,62 @@
           })
         </script>
       <div class="content-wrapper">
+          @if (session('store'))
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-right",
+                        iconColor: 'green',
+                        customClass: {
+                            popup: 'colored-toast'
+                        },
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true 
+                    });
+                    Toast.fire("Message", "{{ Session::get('store') }}", 'success', {
+                        icon: 'success',
+                    });
 
+                </script>
+                @endif
 
-@if (session('store'))
-      <script>
-          const Toast = Swal.mixin({
-              toast: true,
-              position: "top-right",
-              iconColor: 'green',
-              customClass: {
-                  popup: 'colored-toast'
-              },
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true 
-          });
-          Toast.fire("Message", "{{ Session::get('store') }}", 'success', {
-              icon: 'success',
-          });
+                @if (session('update'))
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-right",
+                        iconColor: 'green',
+                        customClass: {
+                            popup: 'colored-toast'
+                        },
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true 
+                    });
+                    Toast.fire("Message", "{{ Session::get('update') }}", 'success', {
+                        icon: 'success',
+                    });
 
-      </script>
-      @endif
+                </script>
+                @endif
 
-      @if (session('update'))
-      <script>
-          const Toast = Swal.mixin({
-              toast: true,
-              position: "top-right",
-              iconColor: 'green',
-              customClass: {
-                  popup: 'colored-toast'
-              },
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true 
-          });
-          Toast.fire("Message", "{{ Session::get('update') }}", 'success', {
-              icon: 'success',
-          });
+                @if (session('delete'))
+                <script>
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-right",
+                        iconColor: 'green',
+                        customClass: {
+                            popup: 'colored-toast'
+                        },
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true 
+                    });
+                    Toast.fire("Message", "{{ Session::get('delete') }}", 'success', {
+                        icon: 'success',
+                    });
 
-      </script>
-      @endif
-
-      @if (session('delete'))
-      <script>
-          const Toast = Swal.mixin({
-              toast: true,
-              position: "top-right",
-              iconColor: 'green',
-              customClass: {
-                  popup: 'colored-toast'
-              },
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true 
-          });
-          Toast.fire("Message", "{{ Session::get('delete') }}", 'success', {
-              icon: 'success',
-          });
-
-      </script>
-      @endif
+                </script>
+                @endif

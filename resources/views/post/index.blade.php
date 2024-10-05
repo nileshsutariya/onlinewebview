@@ -1,26 +1,15 @@
 @include('layouts.header')
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <h1>POST</h1>
-            </div>
-            <div class="col-md-6">
-                <ol class="breadcrumb float-md-right">
-                    <li class="breadcrumb-category"><a href="#">Home/</a></li>
-                    <li class="breadcrumb-category active">POST</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-outline card-primary shadow">
+                <div class="card mb-3 mt-4 card-outline card-primary shadow">
                     <div class="card-header">
-                        <h3 class="card-title">Post</h3>
+                        @if(isset($post))
+                        <h3 class="card-title">Update Post</h3>
+                        @else
+                        <h3 class="card-title">Add New Post</h3>
+                        @endif
                     </div>
                     <div class="card-body">
                         @if (isset($post))
@@ -128,7 +117,7 @@
                     </div>
                 </div>
             <div class="col-md-7">
-                <div class="card card-outline card-primary shadow">
+            <div class="card mb-3 mt-4 card-outline card-info shadow">
                     <div class="card-header">
                         <h3 class="card-title">Post Data</h3>
                     </div>
@@ -170,29 +159,31 @@
                                         <td>
                                             {{ $value->link }}
                                         </td>
-                                        <td class="text-center">
-                                            @if ($value->is_suggested== '1')
+                                        @if ($value->is_suggested== '1')
+                                            <td class="text-center text-success">
                                                 Suggested
-                                            @else
-                                              not Suggested
-                                            @endif
+                                            </td>
+                                        @else
+                                            <td class="text-center text-danger">
+                                                not Suggested
+                                            </td>
+                                        @endif
+                                        @if ($value->is_visible== '1')
+                                        <td class="text-center text-primary">
+                                            Visible
                                         </td>
-                                        <td class="text-center">
-                                            @if ($value->is_visible== '1')
-                                                Visible
-                                            @else
+                                        @else
+                                        <td class="text-center text-danger">
                                               not Visible
+                                            </td>
                                             @endif
-                                        </td>
                                         @if (!isset($post))
                                             <td>
                                                 <a class="btn" href="{{ route('post.edit', $value->id) }}">
-                                                    <i class="fa fa-pen text-warning"></i>
-                                                    Edit
+                                                <i class="bi bi-pencil-square text-success"></i> Edit
                                                 </a>
                                                 <a class="btn" href="{{ route('post.delete', $value->id) }}">
-                                                    <i class="fa fa-trash text-danger"></i>
-                                                    Delete
+                                                    <i class="fa fa-trash text-danger"></i>Delete
                                                 </a>
                                             </td>
                                         @endif

@@ -11,15 +11,16 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 // Route::post('/login',[apiController::class,'login'] );
-Route::get('/category',[apiController::class,'category'] );
-Route::get('/bycategory/{id}',[apiController::class,'bycategory'] );
+Route::post('/category',[apiController::class,'category'] );
+Route::post('/bycategory',[apiController::class,'bycategory'] );
+Route::post('/most_famous',[apiController::class,'most_famous'] );
 
-Route::get('/post',[apiController::class,'post'] );
-Route::get('/post/{id}', [apiController::class,'postdetails'] );
+Route::post('/post',[apiController::class,'post'] );
+Route::post('/posts',[apiController::class,'postdetails'] );
 
 Route::post('/activitylog/store',[ActivitylogController::class,'store'] );
 
-Route::get('/slider',[apiController::class,'slider'] );
+Route::post('/slider',[apiController::class,'slider'] );
 
-Route::get('/ads-links', [apiController::class, 'index']);
+Route::post('/ads-links', [apiController::class, 'index']);
 Route::post('/ads-links', [AdsLinkController::class, 'store']);

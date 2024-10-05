@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
     public function index(){
-        $category=Category::all();
+        $category=Category::where('status',1)->get();
         $posts= Post::leftJoin('category','category.id','=','post.category_id')->select('post.*','category.name as categoryname')->paginate(3);
         return view('post.index',compact('category','posts'));
     }
@@ -48,7 +48,7 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('store', 'post Created Successfully!!');
     }
     public function edit($id){
-        $posts= post::paginate(3);
+        $posts= Post::leftJoin('category','category.id','=','post.category_id')->select('post.*','category.name as categoryname')->paginate(3);
         $post = post::find($id);
         $category= Category::all();
         return view("post.index",compact('post', 'posts', 'category'));
