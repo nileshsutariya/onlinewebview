@@ -1,9 +1,24 @@
 @include ('layouts.header')
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Category</h1>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb float-md-right">
+                    <li class="breadcrumb-category"><a href="#">Home/</a></li>
+                    <li class="breadcrumb-category active">Category</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="content">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <div class="card mb-3 mt-4 card-outline card-primary shadow">
+                <div class="card mb-3 mt-2 card-outline card-primary shadow">
                     <div class="card-header">
                         @if(isset($category))
                         <h3 class="card-title">Update Category</h3>
@@ -13,7 +28,6 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-
                         @if (isset($category))
                             <form action="{{route('categories.update')}}" method="POST" enctype="multipart/form-data">
                         @else
@@ -57,7 +71,7 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="card mb-3 mt-4 card-outline card-info shadow">
+                <div class="card mb-3 mt-2 card-outline card-info shadow">
                     <div class="card-header">
                         <h3 class="card-title">Category List</h3>
                     </div>

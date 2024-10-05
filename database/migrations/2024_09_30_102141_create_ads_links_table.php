@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('ads_links', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('icon');
-            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');
+            $table->string('title');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('ads_links');
     }
 };

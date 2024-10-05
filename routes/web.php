@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdsLinkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,8 @@ Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider
 Route::post('/slider/update/',[SliderController::class,'update'] )->name('slider.update');
 Route::get('/slider/delete/{id}',[SliderController::class,'delete'] )->name('slider.delete');
 
-// Route::get('/ads')
+Route::get('/ads', [AdsLinkController::class, 'index'])->name('ads.index');
+Route::post('/ads/store', [AdsLinkController::class, 'store'])->name('ads.store');
+Route::get('/ads/edit/{id}', [AdsLinkController::class, 'edit'])->name('ads.edit');
+Route::post('/ads/update/',[AdsLinkController::class,'update'] )->name('ads.update');
+Route::get('/ads/delete/{id}',[AdsLinkController::class,'delete'] )->name('ads.delete');

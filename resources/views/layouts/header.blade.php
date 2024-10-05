@@ -113,20 +113,20 @@
               </a>
             </li>
             <li class="nav-item li">
-              <a href="#" class="nav-link ">
+              <a href="#" class="nav-link" id="menu1">
               <i class="nav-icon fa-solid fa-gear" aria-hidden="true"></i>
               <p class="ml-1 ">Settings <i class="right fas fa-angle-left"></i> </p>
 
               </a>
-              <ul class="nav nav-treeview ul">
+              <ul class="nav nav-treeview ul" id="submenu1">
                 <li class="nav-item">
-                  <a href="#" class="nav-link li">
+                  <a href="{{route('ads.index')}}" class="nav-link li">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ad Link</p>
                   </a>
                 </li>
               </ul>
-              <ul class="nav nav-treeview ul">
+              <ul class="nav nav-treeview ul" id="submenu2">
                 <li class="nav-item">
                   <a href="#" class="nav-link li">
                     <i class="far fa-circle nav-icon"></i>
@@ -156,6 +156,44 @@
       </div>
       <!-- /.sidebar -->
     </aside>
+    
+    {{-- <script>
+      $(function() {
+        var current = location.pathname;
+    
+        // Set active class for the current page
+        $('#ul li a').each(function() {
+          var a = $(this);
+          if (a.attr('href').indexOf(current) !== -1) {
+            a.addClass('active');
+          }
+        });
+    
+        // Open submenus based on stored local storage values
+        $('#ul .nav-item').each(function() {
+          var menu = $(this).find('a.nav-link');
+          var submenu = $(this).find('.nav-treeview');
+    
+          var isOpen = localStorage.getItem(menu.attr('id'));
+          if (isOpen === 'true') {
+            submenu.show(); // keep the submenu open
+            menu.find('.fa-angle-left').addClass('rotate');
+          }
+    
+          // Toggle submenu on click and store state
+          menu.on('click', function() {
+          submenu.toggle(); // open/close the submenu
+          var isOpenNow = submenu.is(':visible');
+          localStorage.setItem(menu.attr('id'), isOpenNow); // store open/close state
+          
+          // Toggle arrow rotation
+          $(this).find('.fa-angle-left').toggleClass('rotate', isOpenNow);
+        });
+
+        });
+      });
+    </script> --}}
+    
    
         <script>           
           $(function(){
